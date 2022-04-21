@@ -104,6 +104,9 @@ function start(opts) {
     app.use(cors());
   }
 
+  app.use(express.json({limit: '50mb'}));
+  app.use(express.urlencoded({limit: '50mb'}));
+  
   app.use('/data/', serve_data.init(options, serving.data));
   app.use('/styles/', serve_style.init(options, serving.styles));
   if (serve_rendered) {
